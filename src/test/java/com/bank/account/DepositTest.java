@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static com.bank.account.builder.DateBuilder.dateFrom;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -17,10 +18,11 @@ public class DepositTest {
     private Amount currentBalance;
 
     @Test
-    public void testDepositVerifyAmountAddedToBalance() {
+    public void verifyAmountAddedToBalance() {
 
         Amount amountToDeposit = Amount.from(100);
-        new Deposit(DateBuilder.dateFrom("10/10/2020"), amountToDeposit, currentBalance);
+        new Deposit(dateFrom("10/10/2020"), amountToDeposit, currentBalance);
+
         verify(currentBalance).addAmount(amountToDeposit);
     }
 }
