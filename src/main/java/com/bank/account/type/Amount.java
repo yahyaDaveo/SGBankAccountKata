@@ -24,6 +24,10 @@ public class Amount {
         return from(-value);
     }
 
+    public String toPrint() {
+        return String.valueOf(value);
+    }
+
     @Override
     public boolean equals(Object obj) {
         Amount amount = (Amount) obj;

@@ -54,4 +54,10 @@ public class AmountTest {
         Amount negativeSix = new Amount(-6);
         assertEquals(six.negative(), negativeSix);
     }
+
+    @Test
+    public void testPrint() {
+        Amount six = new Amount(6);
+        assertEquals(six.toPrint(), "6");
+    }
 }

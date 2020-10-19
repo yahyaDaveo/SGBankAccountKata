@@ -15,4 +15,8 @@ public class Withdrawal extends Operation {
         balance = oldBalance.subtractAmount(amount);
     }
 
+    @Override
+    void appendOperation(StringBuilder stringBuilder) {
+        stringBuilder.append("WITHDRAWAL");
+    }
 }

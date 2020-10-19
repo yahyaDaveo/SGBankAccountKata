@@ -1,5 +1,7 @@
 package com.bank.account.model;
 
+import com.bank.account.printer.Writer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,4 +13,9 @@ public class AccountStatement {
         operations.add(operation);
     }
 
+    public void printOperations(Writer writer) {
+        for (Operation operation : operations) {
+            operation.printOperation(writer);
+        }
+    }
 }

@@ -10,4 +10,8 @@ public class DateBuilder {
     public static LocalDate dateFrom(String date) {
         return LocalDate.parse(date, formatter);
     }
+
+    public static String format(LocalDate date) {
+        return formatter.format(date);
+    }
 }

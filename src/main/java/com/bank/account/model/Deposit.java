@@ -14,4 +14,9 @@ public class Deposit extends Operation {
     void calculateNewBalance(Amount currentBalance) {
         balance = currentBalance.addAmount(amount);
     }
+
+    @Override
+    void appendOperation(StringBuilder stringBuilder) {
+        stringBuilder.append("DEPOSIT   ");
+    }
 }

@@ -5,6 +5,7 @@ import com.bank.account.builder.DateBuilder;
 import com.bank.account.model.Account;
 import com.bank.account.model.AccountStatement;
 import com.bank.account.model.Deposit;
+import com.bank.account.printer.impl.ConsoleWriter;
 import com.bank.account.type.Amount;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +23,9 @@ import static org.mockito.Mockito.verify;
 public class AccountTest {
 
     @Mock
-    AccountStatement statement;
+    private AccountStatement statement;
+    @Mock
+    private ConsoleWriter writer;
     private Account account;
 
     @Before
@@ -48,5 +51,14 @@ public class AccountTest {
         account.withdrawalMoney(withdrawalDate, withdrawalAmount);
         verify(statement).addOperation(any(Deposit.class));
         assertEquals(account.getBalance(), withdrawalAmount.negative());
+    }
+
+    @Test
+    public void testPrintStatement() {
+
+        account.printStatement(writer);
+        verify(statement).printOperations(writer);
+        verify(writer).print("Operation | Date     | Amount | Balance ");
+        verify(writer).print("---------------------------------------");
     }
 }

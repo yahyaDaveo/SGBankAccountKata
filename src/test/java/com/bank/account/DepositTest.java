@@ -1,7 +1,7 @@
 package com.bank.account;
 
-import com.bank.account.builder.DateBuilder;
 import com.bank.account.model.Deposit;
+import com.bank.account.printer.impl.ConsoleWriter;
 import com.bank.account.type.Amount;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +16,8 @@ public class DepositTest {
 
     @Mock
     private Amount currentBalance;
+    @Mock
+    private ConsoleWriter writer;
 
     @Test
     public void verifyAmountAddedToBalance() {
@@ -24,5 +26,16 @@ public class DepositTest {
         new Deposit(dateFrom("10/10/2020"), amountToDeposit, currentBalance);
 
         verify(currentBalance).addAmount(amountToDeposit);
+    }
+
+    @Test
+    public void verifyPrintOperation() {
+
+        Amount balance = Amount.from(200);
+        Amount amountToDeposit = Amount.from(100);
+        Deposit deposit = new Deposit(dateFrom("10/10/2020"), amountToDeposit, balance);
+
+        deposit.printOperation(writer);
+        verify(writer).print("DEPOSIT    | 10/10/2020 | 100 | 300");
     }
 }
