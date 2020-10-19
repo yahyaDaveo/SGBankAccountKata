@@ -39,4 +39,14 @@ public class AccountTest {
         verify(statement).addOperation(any(Deposit.class));
         assertEquals(account.getBalance(), depositAmount);
     }
+
+    @Test
+    public void testWithdrawalMoney() {
+        LocalDate withdrawalDate = DateBuilder.dateFrom("10/10/2020");
+        Amount withdrawalAmount = Amount.from(1000);
+
+        account.withdrawalMoney(withdrawalDate, withdrawalAmount);
+        verify(statement).addOperation(any(Deposit.class));
+        assertEquals(account.getBalance(), withdrawalAmount.negative());
+    }
 }

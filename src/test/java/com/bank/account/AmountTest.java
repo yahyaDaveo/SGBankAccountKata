@@ -36,8 +36,22 @@ public class AmountTest {
     public void testAddAmount() {
         Amount six = new Amount(6);
         Amount four = new Amount(4);
-        Amount ten= new Amount(10);
+        Amount ten = new Amount(10);
         assertEquals(six.addAmount(four), ten);
     }
 
+    @Test
+    public void testSubtractAmount() {
+        Amount six = new Amount(6);
+        Amount two = new Amount(2);
+        Amount four = new Amount(4);
+        assertEquals(six.subtractAmount(two), four);
+    }
+
+    @Test
+    public void testNegativeAmount() {
+        Amount six = new Amount(6);
+        Amount negativeSix = new Amount(-6);
+        assertEquals(six.negative(), negativeSix);
+    }
 }

@@ -16,6 +16,14 @@ public class Amount {
         return new Amount(value + amount.value);
     }
 
+    public Amount subtractAmount(Amount amount) {
+        return new Amount(value - amount.value);
+    }
+
+    public Amount negative() {
+        return from(-value);
+    }
+
     @Override
     public boolean equals(Object obj) {
         Amount amount = (Amount) obj;

@@ -13,6 +13,7 @@ public class MainApp {
         Account myAccount = new Account(new AccountStatement());
 
         myAccount.depositMoney(dateFrom("12/07/2020"), Amount.from(500));
+        myAccount.withdrawalMoney(dateFrom("01/10/2020"), Amount.from(200));
 
     }
 }

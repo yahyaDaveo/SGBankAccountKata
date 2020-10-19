@@ -1,7 +1,7 @@
 package com.bank.account;
 
 import com.bank.account.builder.DateBuilder;
-import com.bank.account.model.Deposit;
+import com.bank.account.model.Withdrawal;
 import com.bank.account.type.Amount;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,16 +11,16 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class DepositTest {
+public class WithdrawalTest {
 
     @Mock
     private Amount currentBalance;
 
     @Test
-    public void testDepositVerifyAmountAddedToBalance() {
+    public void testWithdrawalVerifyAmountSubtractedFromBalance() {
 
-        Amount amountToDeposit = Amount.from(100);
-        new Deposit(DateBuilder.dateFrom("10/10/2020"), amountToDeposit, currentBalance);
-        verify(currentBalance).addAmount(amountToDeposit);
+        Amount amountToWithdrawal = Amount.from(100);
+        new Withdrawal(DateBuilder.dateFrom("10/10/2020"), amountToWithdrawal, currentBalance);
+        verify(currentBalance).subtractAmount(amountToWithdrawal);
     }
 }

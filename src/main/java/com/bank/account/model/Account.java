@@ -20,6 +20,11 @@ public class Account {
         balance = deposit.balance;
         statement.addOperation(deposit);
     }
+    public void withdrawalMoney(LocalDate withdrawalDate, Amount amount) {
+        Operation withdrawal = new Withdrawal(withdrawalDate, amount, balance);
+        balance = withdrawal.balance;
+        statement.addOperation(withdrawal);
+    }
 
     public Amount getBalance() {
         return balance;
